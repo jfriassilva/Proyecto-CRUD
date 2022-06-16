@@ -1,16 +1,16 @@
 {
   "pacientes": [
     {
-      "nombre": "jero",
+      "nombre": "jero fs",
       "email": "jero@jero.com",
       "telefono": "391749212",
       "edad": "32",
       "peso": 23,
-      "notas": "hoasdg",
+      "notas": "",
       "id": 1
     },
     {
-      "nombre": "guada",
+      "nombre": "guada :)",
       "email": "jero@jero.com",
       "telefono": "391749212",
       "edad": "32",
@@ -28,42 +28,6 @@
       "id": 3
     },
     {
-      "nombre": "dsafsd",
-      "email": "fsdfsda@hfd.com",
-      "telefono": "324234",
-      "edad": "323",
-      "peso": 23,
-      "notas": "2",
-      "id": 4
-    },
-    {
-      "nombre": "chaio",
-      "email": "chaio@fgds.com",
-      "telefono": "123112",
-      "edad": "57",
-      "peso": 63,
-      "notas": "fasfdsaf",
-      "id": 5
-    },
-    {
-      "nombre": "jero",
-      "email": "jerp@gmai.com",
-      "telefono": "2345432",
-      "edad": "23",
-      "peso": 32,
-      "notas": "adsgnsag",
-      "id": 6
-    },
-    {
-      "nombre": "hola",
-      "email": "hola@hl.com",
-      "telefono": "2342354",
-      "edad": "34",
-      "peso": 23,
-      "notas": "gsdgdsfg",
-      "id": 7
-    },
-    {
       "nombre": "chaio",
       "email": "chaio@gmail.com",
       "telefono": "23452341",
@@ -71,15 +35,6 @@
       "peso": 12,
       "notas": "fasdpogjasdopgjsdgjsdlkvmxczlkx",
       "id": 8
-    },
-    {
-      "nombre": "jero",
-      "email": "jero@jero.com",
-      "telefono": "391749212",
-      "edad": "32",
-      "peso": 23,
-      "notas": "",
-      "id": 9
     },
     {
       "nombre": "jero frias silva",

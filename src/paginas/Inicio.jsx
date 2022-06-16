@@ -11,7 +11,6 @@ useEffect(() => {
           const url = 'http://localhost:4000/pacientes'
           const respuesta = await fetch(url)
           const resultado = await respuesta.json()
-
           setPacientes(resultado)
       } catch (error) {
         console.log(error)
@@ -19,6 +18,25 @@ useEffect(() => {
     }
     obtenerPacientesAPI()
 }, [])
+
+  const handleEliminar = async id => {
+    const confirmar = confirm('¿Deseas eliminar este paciente?')
+
+    if(confirmar) {
+      try {
+        const url = `http://localhost:4000/pacientes/${id}`
+        const respuesta = await fetch(url, {
+          method:'DELETE'
+        })
+         respuesta.json()
+
+        const arrayPacientes = pacientes.filter( paciente => paciente.id !== id )
+        setPacientes(arrayPacientes)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
 
   return (
     <>
@@ -39,6 +57,7 @@ useEffect(() => {
             <Paciente
               key={paciente.id}
               paciente={paciente}
+              handleEliminar={handleEliminar}
             />
           ))}
       </tbody>
