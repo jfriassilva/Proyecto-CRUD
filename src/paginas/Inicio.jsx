@@ -8,7 +8,7 @@ const Inicio = () => {
 useEffect(() => {
     const obtenerPacientesAPI = async () => {
       try {
-          const url = 'http://localhost:4000/pacientes'
+          const url = import.meta.env.VITE_SOME_KEY
           const respuesta = await fetch(url)
           const resultado = await respuesta.json()
           setPacientes(resultado)
@@ -24,7 +24,7 @@ useEffect(() => {
 
     if(confirmar) {
       try {
-        const url = `http://localhost:4000/pacientes/${id}`
+        const url = `${import.meta.env.VITE_SOME_KEY}/${id}`
         const respuesta = await fetch(url, {
           method:'DELETE'
         })

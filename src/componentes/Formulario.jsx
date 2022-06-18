@@ -28,7 +28,7 @@ const Formulario = ({ paciente, cargando }) => {
     try {
       let respuesta
       if(paciente.id){
-        const url = `http://localhost:4000/pacientes/${paciente.id}`
+        const url = `${import.meta.env.VITE_SOME_KEY}/${paciente.id}`
          respuesta = await fetch(url, {
           method: "PUT",
           body: JSON.stringify(valores),
@@ -37,7 +37,7 @@ const Formulario = ({ paciente, cargando }) => {
           },
         });
       } else {
-      const url = "http://localhost:4000/pacientes";
+      const url = import.meta.env.VITE_SOME_KEY
        respuesta = await fetch(url, {
         method: "POST",
         body: JSON.stringify(valores),

@@ -7,10 +7,9 @@ import EditarPaciente from './paginas/EditarPaciente'
 import VerPaciente from './paginas/VerPaciente'
 
 
-
 function App() {
-  
 
+  
   return (
     <BrowserRouter>
     <Routes>
