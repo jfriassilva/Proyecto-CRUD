@@ -6,7 +6,7 @@
       "telefono": "391749212",
       "edad": "32",
       "peso": 23,
-      "notas": "",
+      "notas": "fghfghfghfg",
       "id": 1
     },
     {
@@ -15,17 +15,8 @@
       "telefono": "391749212",
       "edad": "32",
       "peso": 23,
-      "notas": "",
+      "notas": "hola",
       "id": 2
-    },
-    {
-      "nombre": "chaio",
-      "email": "chaio@gmail.com",
-      "telefono": "23452341",
-      "edad": "23",
-      "peso": 12,
-      "notas": "fasdpogjasdopgjsdgjsdlkvmxczlkx",
-      "id": 8
     }
   ]
 }
