@@ -1,4 +1,4 @@
-import Usuario from "../models/Usuario.js";
+import Usuario from "./Usuario.js";
 import generarId from "../helpers/generarId.js";
 
 const registrar = async (req, res) => {
