@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.7",
+    "axios": "^0.27.2",
     "formik": "^2.2.9",
     "formk": "^0.0.20",
     "postcss": "^8.4.14",
