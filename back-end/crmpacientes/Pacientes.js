@@ -30,7 +30,7 @@ const PacienteSchema = mongoose.Schema({
         trim: true,
         required: true
     },
-    creador: {
+    medico: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Usuario",
     }
