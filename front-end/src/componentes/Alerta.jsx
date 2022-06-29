@@ -1,11 +1,9 @@
-import React from 'react'
 
-const Alerta = ({children}) => {
-    return (
-        <div className="text-center my-4 bg-red-600 text-white font-bold p-3 uppercase">
-            {children}
-        </div>
-    )
+const Alerta = ({alerta}) => {
+  return (
+    <div className={`${alerta.error ? 'from-red-400 to-red-600' : 'from-sky-400 to-sky-600'} bg-gradient-to-br text-center rounded uppercase text-white font-bold text-sm my-10`}>
+        {alerta.msg}</div>
+  )
 }
 
 export default Alerta

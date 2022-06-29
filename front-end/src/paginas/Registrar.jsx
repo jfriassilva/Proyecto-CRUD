@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import Alerta1 from "../componentes/Alerta1"
+import Alerta from "../componentes/Alerta"
 import axios from "axios"
 
 const Registrar = () => {
@@ -130,7 +130,7 @@ const Registrar = () => {
             <input type="submit" value="Crear cuenta" className="bg-sky-700 mb-5 w-full py-3 text-white uppercase font-bold rounded hover:cursor-pointer hover:bg-sky-800 transition-colors"/>
         </form>
 
-        { msg && <Alerta1 alerta={alerta}/> }
+        { msg && <Alerta alerta={alerta}/> }
 
         <nav className="lg:flex lg:justify-between">
             <Link
