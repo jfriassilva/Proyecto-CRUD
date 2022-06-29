@@ -8,7 +8,7 @@ const urlActual = location.pathname
 
   return (
   <div className="md:flex md:min-h-screen">
-    <div className="md:w-1/4 bg-blue-900 px-5 py-10">
+    <div className="md:w-1/4 bg-sky-600 px-5 py-10">
       <h2 className= "text-4xl font-black text-center text-white">Nutricionista</h2>
       
       <nav className="mt-10">

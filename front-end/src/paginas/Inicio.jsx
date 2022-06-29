@@ -40,11 +40,11 @@ useEffect(() => {
 
   return (
     <>
-    <h1 className="font-black text-4xl text-blue-900">Pacientes</h1>
+    <h1 className="font-black text-4xl text-sky-600">Pacientes</h1>
     <p className="mt-3">Administra tus pacientes</p>
 
     <table className="w-full mt-5 table-auto shadow bg-white">
-      <thead className='bg-blue-800 text-white'>
+      <thead className='bg-sky-600 text-white'>
         <tr>
           <th className="p-2">Nombre</th>
           <th className="p-2">Contacto</th>

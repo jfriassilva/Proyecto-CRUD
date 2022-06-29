@@ -16,17 +16,17 @@ const Paciente = ({paciente, handleEliminar}) => {
         <td className="p-3">
             <button
                 type="Button"
-                className="bg-yellow-500 hover:bg-yellow-600 block w-full text-white p-2 uppercase fond-bold text-xs"
+                className="bg-slate-600 hover:bg-slate-800 block w-full text-white p-2 uppercase fond-bold text-xs"
                 onClick={() => navigate(`/pacientes/${id}`)}
             >Ver</button>
             <button
                 type="Button"
-                className="bg-blue-600 hover:bg-blue-700 block w-full text-white p-2 uppercase fond-bold text-xs mt-3"
+                className="bg-sky-600 hover:bg-sky-800 block w-full text-white p-2 uppercase fond-bold text-xs mt-3"
                 onClick={() => navigate(`/pacientes/editar/${id}`)}
             >Editar</button>
             <button
                 type="Button"
-                className="bg-red-600 hover:bg-red-700 block w-full text-white p-2 uppercase fond-bold text-xs mt-3"
+                className="bg-red-300 hover:bg-red-500 block w-full text-white p-2 uppercase fond-bold text-xs mt-3"
                 onClick={() => handleEliminar(id)}
             >Eliminar</button>
         </td>

@@ -180,7 +180,7 @@ const Formulario = ({ paciente, cargando }) => {
                 value={
                   paciente?.nombre ? "Editar Paciente" : "Agregar Paciente"
                 }
-                className="mt-5 w-full bg-blue-800 p-3 text-white uppercase font-bold text-lg"
+                className="mt-5 w-full bg-sky-600 p-3 text-white uppercase font-bold text-lg"
               />
             </Form>
           );
