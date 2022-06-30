@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import Alerta from "../componentes/Alerta"
-import axios from "axios"
+import usuarioAxios from "../config/usuarioAxios"
 
 const Registrar = () => {
     const [nombre, setNombre] = useState('')
@@ -40,7 +40,7 @@ const Registrar = () => {
         setAlerta({})
 
         try {
-            const {data} = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/usuarios`,{nombre, email, password} )
+            const {data} = await usuarioAxios.post(`/usuarios`,{nombre, email, password} )
 
             setAlerta({
                msg: data.msg,

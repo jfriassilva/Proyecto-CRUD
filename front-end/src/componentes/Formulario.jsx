@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import Alerta from "./Alerta";
+import Alerta0 from "./Alerta0";
 import Spinner from "./Spinner";
 
 const Formulario = ({ paciente, cargando }) => {
@@ -93,7 +93,7 @@ const Formulario = ({ paciente, cargando }) => {
                 />
 
                 {errors.nombre && touched.nombre ? (
-                  <Alerta>{errors.nombre}</Alerta>
+                  <Alerta0>{errors.nombre}</Alerta0>
                 ) : null}
               </div>
 
@@ -109,7 +109,7 @@ const Formulario = ({ paciente, cargando }) => {
                   name="email"
                 />
                 {errors.email && touched.email ? (
-                  <Alerta>{errors.email}</Alerta>
+                  <Alerta0>{errors.email}</Alerta0>
                 ) : null}
               </div>
 
@@ -125,7 +125,7 @@ const Formulario = ({ paciente, cargando }) => {
                   name="telefono"
                 />
                 {errors.telefono && touched.telefono ? (
-                  <Alerta>{errors.telefono}</Alerta>
+                  <Alerta0>{errors.telefono}</Alerta0>
                 ) : null}
               </div>
 
@@ -141,7 +141,7 @@ const Formulario = ({ paciente, cargando }) => {
                   name="edad"
                 />
                 {errors.edad && touched.edad ? (
-                  <Alerta>{errors.edad}</Alerta>
+                  <Alerta0>{errors.edad}</Alerta0>
                 ) : null}
               </div>
 
@@ -157,7 +157,7 @@ const Formulario = ({ paciente, cargando }) => {
                   name="peso"
                 />
                 {errors.edad && touched.edad ? (
-                  <Alerta>{errors.edad}</Alerta>
+                  <Alerta0>{errors.edad}</Alerta0>
                 ) : null}
               </div>
 
