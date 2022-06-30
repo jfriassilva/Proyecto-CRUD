@@ -5,8 +5,8 @@ import Alerta from "../componentes/Alerta"
 
 const ConfirmarCuenta = () => {
 
-  const [alerta, setAlerta] = useState({})
   const [cuentaConfirmada, setCuentaConfirmada] = useState(false)
+  const [alerta, setAlerta] = useState({})
 
 const params = useParams();
 const {id} = params
@@ -25,9 +25,9 @@ useEffect(() => {
       setCuentaConfirmada(true)
 
     } catch (error){
-      setAlerta({
-        msg: error.response.data.msg,
-        error: true
+        setAlerta ({
+          msg: error.response.data.msg,
+          error: true
       })
     }
   }
