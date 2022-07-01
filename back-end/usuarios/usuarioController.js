@@ -10,7 +10,7 @@ const registrar = async (req, res) => {
     const existeUsuario = await Usuario.findOne({email});
 
     if (existeUsuario) {
-        const error = new Error('Usuario ya registrado');
+        const error = new Error("Usuario ya registrado");
         return res.status(400).json({msg: error.message});
     }
 
@@ -28,7 +28,7 @@ const registrar = async (req, res) => {
 
         });
 
-        res.json({msg: 'Usuario Creado Correctamente, Revisa tu mail para confirmar tu cuenta'});
+        res.json({msg: "Usuario Creado Correctamente, Revisa tu mail para confirmar tu cuenta"});
 
     } catch (error) {
        console.log(error);
