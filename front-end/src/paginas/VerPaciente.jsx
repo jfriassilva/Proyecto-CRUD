@@ -1,31 +1,18 @@
 import {useEffect, useState} from 'react'
 import {useParams } from 'react-router-dom'
 import Spinner from '../componentes/Spinner'
+import usePacientes from '../hooks/usePacientes'
 
 const VerPaciente = () => {
 
-    const [paciente, setPaciente] = useState({})
-    const [cargando, setCargando] = useState (true)
-
-    const { id } = useParams()
+    const params = useParams();
+    const { obtenerPaciente , paciente, cargando} = usePacientes()
 
     useEffect(() => {
-        const obtenerPacientesAPI = async ()  => {
-            try {
-                const url = `${import.meta.env.VITE_SOME_KEY}/${id}`
-                const respuesta = await fetch (url)
-                const resultado = await respuesta.json()
+        obtenerPaciente(params.id)
 
-                setPaciente(resultado)
-
-            } catch (error) {
-                console.log(error)
-            }
-                setCargando(!cargando)
-        }
-        obtenerPacientesAPI()
-    }, [])
-
+    }, [] )
+   
     
   return (
     cargando ? <Spinner/> : Object.keys(paciente).length === 0 ? <p> No Hay Resultados</p> : (

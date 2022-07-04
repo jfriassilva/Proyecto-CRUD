@@ -4,7 +4,8 @@ const Paciente = ({paciente, handleEliminar}) => {
 
     const navigate = useNavigate()
 
-    const { nombre, email, telefono, edad, peso , notas , id} = paciente
+    const { nombre, email, telefono, edad, peso , notas , _id} = paciente
+
 
   return (
     <tr className=" border-b hover:bg-gray-50 text-center">
@@ -17,17 +18,17 @@ const Paciente = ({paciente, handleEliminar}) => {
             <button
                 type="Button"
                 className="bg-slate-600 hover:bg-slate-800 block w-full text-white p-2 uppercase fond-bold text-xs"
-                onClick={() => navigate(`/pacientes/${id}`)}
+                onClick={() => navigate(`/pacientes/${_id}`)}
             >Ver</button>
             <button
                 type="Button"
                 className="bg-sky-600 hover:bg-sky-800 block w-full text-white p-2 uppercase fond-bold text-xs mt-3"
-                onClick={() => navigate(`/pacientes/editar/${id}`)}
+                onClick={() => navigate(`/pacientes/editar/${_id}`)}
             >Editar</button>
             <button
                 type="Button"
                 className="bg-red-300 hover:bg-red-500 block w-full text-white p-2 uppercase fond-bold text-xs mt-3"
-                onClick={() => handleEliminar(id)}
+                onClick={() => handleEliminar(_id)}
             >Eliminar</button>
         </td>
     </tr>

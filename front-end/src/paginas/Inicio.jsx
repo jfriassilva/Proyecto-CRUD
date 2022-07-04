@@ -1,22 +1,30 @@
 import {useState , useEffect} from 'react'
 import Paciente from '../componentes/Paciente'
-
+import usuarioAxios from '../config/usuarioAxios'
 const Inicio = () => {
 
   const [pacientes, setPacientes] = useState([])
 
 useEffect(() => {
-    const obtenerPacientesAPI = async () => {
-      try {
-          const url = import.meta.env.VITE_SOME_KEY
-          const respuesta = await fetch(url)
-          const resultado = await respuesta.json()
-          setPacientes(resultado)
+  const obtenerPacientes = async () => {
+    try {
+     const token = localStorage.getItem('token')
+     if(!token) return
+
+     const config = {
+         headers: {
+             "Content-Type": "application/json",
+             Authorization: `Bearer ${token}`
+         }
+     }
+     const { data } = await usuarioAxios('/pacientes', config) 
+     setPacientes(data)
+
       } catch (error) {
         console.log(error)
       }
     }
-    obtenerPacientesAPI()
+    obtenerPacientes()
 }, [])
 
   const handleEliminar = async id => {
@@ -55,7 +63,7 @@ useEffect(() => {
       <tbody>
           {pacientes.map( paciente => (
             <Paciente
-              key={paciente.id}
+              key={paciente._id}
               paciente={paciente}
               handleEliminar={handleEliminar}
             />
