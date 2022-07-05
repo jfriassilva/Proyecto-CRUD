@@ -1,5 +1,5 @@
 import {useNavigate} from 'react-router-dom'
-
+ 
 const Paciente = ({paciente, handleEliminar}) => {
 
     const navigate = useNavigate()

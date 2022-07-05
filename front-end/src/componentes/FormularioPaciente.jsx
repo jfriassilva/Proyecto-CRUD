@@ -1,10 +1,12 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import { useParams } from 'react-router-dom'
 import usePacientes from '../hooks/usePacientes'
 import Alerta from './Alerta'
 
 
 const FormularioPaciente = () => {
 
+  const [id, setId] = useState(null)
   const [nombre, setNombre] = useState('')
   const [email, setEmail] = useState('')
   const [telefono, setTelefono] = useState('')
@@ -12,7 +14,21 @@ const FormularioPaciente = () => {
   const [peso, setPeso] = useState('')
   const [notas, setNotas] = useState('')
 
-  const { mostrarAlerta, alerta, submitPacientes } = usePacientes();
+  const params = useParams()
+  const { mostrarAlerta, alerta, submitPacientes, paciente } = usePacientes();
+
+  useEffect(() => {
+    if(params.id && paciente.nombre) {
+      setId(paciente._id)
+      setNombre(paciente.nombre)
+      setEmail(paciente.email)
+      setTelefono(paciente.telefono)
+      setEdad(paciente.edad)
+      setPeso(paciente.peso)
+      setNotas(paciente.notas)
+    }
+  }, [params])
+
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -143,7 +159,7 @@ const FormularioPaciente = () => {
 
         <input
           type="submit"
-          value="Agregar Paciente"
+          value={ id ? 'Actualizar paciente' : 'Agregar Paciente'}
           className="mt-5 w-full bg-sky-600 p-3 text-white uppercase font-bold text-lg cursor-pointer hover:bg-sky-700 transition-colors"
         />
     </form>
