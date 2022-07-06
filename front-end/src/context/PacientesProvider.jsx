@@ -44,33 +44,75 @@ const PacientesProvider = ({children}) => {
         }, 5000);
     }
 
-    const submitPacientes = async pacientes => {
-        try {
-            const token = localStorage.getItem('token')
-            if(!token) return
+    const submitPaciente = async paciente => {
 
-            const config = {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`
-                }
-            }
-
-            const { data } = await usuarioAxios.post('/pacientes', pacientes, config)
-            setPacientes(data)
-
-            setAlerta({
-                msg:'Paciente agregado correctamente',
-                error: false
-            })
-            setTimeout(()=> {
-                setAlerta({})
-                navigate('/pacientes')
-            }, 3000)
-        } catch (error) {
-            console.log(error)
+        if(paciente.id) {
+         await editarPaciente(paciente)
+        } else {
+         await nuevoPaciente(paciente)
         }
     }
+
+    const editarPaciente = async paciente => {
+      try {
+        const token = localStorage.getItem('token')
+        if(!token) return
+
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+        const { data } = await usuarioAxios.put(`/pacientes/${paciente.id}`, paciente, config)
+
+        const pacientesActualizados = pacientes.map(pacienteState => pacienteState._id === data._id ? data : pacienteState )
+
+        setPacientes(pacientesActualizados)
+
+        setAlerta({
+          msg:'Paciente actualizado correctamente',
+          error: false
+      })
+      setTimeout(()=> {
+          setAlerta({})
+          navigate('/pacientes')
+      }, 2000)
+
+      } catch (error) {
+        console.log(error)
+      }                                                         
+    }
+
+    const nuevoPaciente = async paciente => {
+      try {
+        const token = localStorage.getItem('token')
+        if(!token) return
+
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+        const { data } = await usuarioAxios.post('/pacientes', paciente, config)
+        
+        setPaciente([...pacientes, data])
+
+        setAlerta({
+            msg:'Paciente agregado correctamente',
+            error: false
+        })
+        setTimeout(()=> {
+            setAlerta({})
+            navigate('/pacientes')
+        }, 3000)
+    } catch (error) {
+        console.log(error)
+    }
+  }
 
     const obtenerPaciente = async id => {
         setCargando(true)
@@ -101,7 +143,7 @@ const PacientesProvider = ({children}) => {
                 pacientes,
                 mostrarAlerta,
                 alerta,
-                submitPacientes,
+                submitPaciente,
                 obtenerPaciente,
                 paciente,
                 cargando

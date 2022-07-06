@@ -15,7 +15,7 @@ const FormularioPaciente = () => {
   const [notas, setNotas] = useState('')
 
   const params = useParams()
-  const { mostrarAlerta, alerta, submitPacientes, paciente } = usePacientes();
+  const { mostrarAlerta, alerta, submitPaciente, paciente } = usePacientes();
 
   useEffect(() => {
     if(params.id && paciente.nombre) {
@@ -43,8 +43,9 @@ const FormularioPaciente = () => {
     }
     
     // 
-    await submitPacientes({nombre, email, telefono, edad, peso, notas})
+    await submitPaciente({id ,nombre, email, telefono, edad, peso, notas})
 
+    setId(null)
     setNombre('')
     setEmail('')
     setTelefono('')
