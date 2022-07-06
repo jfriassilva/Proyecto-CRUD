@@ -1,11 +1,21 @@
 import {useNavigate} from 'react-router-dom'
+import usePacientes from '../hooks/usePacientes'
+
  
-const Paciente = ({paciente, handleEliminar}) => {
+const Paciente = ({paciente}) => {
 
     const navigate = useNavigate()
+  const { eliminarPaciente } = usePacientes()
+
+    const handleClick = () => {
+        if(confirm('¿Desea eliminar este paciente?')){
+            eliminarPaciente(_id)
+        } 
+    }
 
     const { nombre, email, telefono, edad, peso , notas , _id} = paciente
 
+    
 
   return (
     <tr className=" border-b hover:bg-gray-50 text-center">
@@ -19,19 +29,20 @@ const Paciente = ({paciente, handleEliminar}) => {
                 type="Button"
                 className="bg-slate-600 hover:bg-slate-800 block w-full text-white p-2 uppercase fond-bold text-xs"
                 onClick={() => navigate(`/pacientes/${_id}`)}
-            >Ver</button>
+                >Ver</button>
             <button
                 type="Button"
                 className="bg-sky-600 hover:bg-sky-800 block w-full text-white p-2 uppercase fond-bold text-xs mt-3"
                 onClick={() => navigate(`/pacientes/editar/${_id}`)}
-            >Editar</button>
+                >Editar</button>
             <button
                 type="Button"
                 className="bg-red-300 hover:bg-red-500 block w-full text-white p-2 uppercase fond-bold text-xs mt-3"
-                onClick={() => handleEliminar(_id)}
-            >Eliminar</button>
+                onClick={handleClick}
+                >Eliminar</button>
         </td>
     </tr>
+
   )
 }
 

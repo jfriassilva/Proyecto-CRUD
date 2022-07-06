@@ -1,6 +1,8 @@
 import {useState, useEffect, createContext} from 'react'
 import usuarioAxios from '../config/usuarioAxios'
 import { useNavigate } from 'react-router-dom'
+import Paciente from '../componentes/Paciente';
+import Inicio from '../paginas/Inicio';
 
 
 const PacientesContext = createContext();
@@ -149,7 +151,22 @@ const PacientesProvider = ({children}) => {
         }
 
         const { data } = await usuarioAxios.delete(`/pacientes/${id}`, config)
-        console.log(data)
+       
+        // const pacienteActualizados = {...Inicio}
+
+        const pacienteActualizados = pacientes.filter(pacienteState => pacienteState._id !== id)
+        
+        
+        setPacientes(pacienteActualizados)
+        
+        setAlerta({
+          msg: data.msg,
+          error: false
+        })
+        setTimeout(()=> {
+          setAlerta({})
+          navigate('/pacientes')
+      }, 3000)
        } catch (error) {
         console.log(error)
        }

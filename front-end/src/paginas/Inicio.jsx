@@ -1,14 +1,14 @@
 import {useState , useEffect} from 'react'
-import { useParams } from 'react-router-dom'
 import Paciente from '../componentes/Paciente'
 import usuarioAxios from '../config/usuarioAxios'
 import usePacientes from '../hooks/usePacientes'
+import Alerta from '../componentes/Alerta'
+
 
 const Inicio = () => {
 
   const [pacientes, setPacientes] = useState([])
-  const params = useParams()
-  const { eliminarPaciente } = usePacientes()
+  const { alerta } = usePacientes()
 
 useEffect(() => {
   const obtenerPacientes = async () => {
@@ -32,17 +32,16 @@ useEffect(() => {
     obtenerPacientes()
 }, [])
 
-  const handleEliminar = () => {
-
-    if(confirm('¿Deseas eliminar este paciente?')) {
-      eliminarPaciente(params._id)
-    } 
-  }
+const { msg } = alerta
 
   return (
     <>
     <h1 className="font-black text-4xl text-sky-600">Pacientes</h1>
     <p className="mt-3">Administra tus pacientes</p>
+
+    <div>
+        {msg && <Alerta alerta={alerta} /> }
+    </div>
 
     <table className="w-full mt-5 table-auto shadow bg-white">
       <thead className='bg-sky-600 text-white'>
@@ -58,7 +57,6 @@ useEffect(() => {
             <Paciente
               key={paciente._id}
               paciente={paciente}
-              handleEliminar={handleEliminar}
             />
           ))}
       </tbody>
