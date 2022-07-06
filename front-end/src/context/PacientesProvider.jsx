@@ -136,6 +136,25 @@ const PacientesProvider = ({children}) => {
         }
     }
 
+    const eliminarPaciente = async id  => {
+       try {
+        const token = localStorage.getItem('token')
+        if(!token) return
+
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        }
+
+        const { data } = await usuarioAxios.delete(`/pacientes/${id}`, config)
+        console.log(data)
+       } catch (error) {
+        console.log(error)
+       }
+    }
+
 
     return (
         <PacientesContext.Provider
@@ -146,7 +165,8 @@ const PacientesProvider = ({children}) => {
                 submitPaciente,
                 obtenerPaciente,
                 paciente,
-                cargando
+                cargando,
+                eliminarPaciente
             }}
             >{children}
         </PacientesContext.Provider>

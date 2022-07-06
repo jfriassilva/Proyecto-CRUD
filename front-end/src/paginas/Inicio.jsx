@@ -1,9 +1,14 @@
 import {useState , useEffect} from 'react'
+import { useParams } from 'react-router-dom'
 import Paciente from '../componentes/Paciente'
 import usuarioAxios from '../config/usuarioAxios'
+import usePacientes from '../hooks/usePacientes'
+
 const Inicio = () => {
 
   const [pacientes, setPacientes] = useState([])
+  const params = useParams()
+  const { eliminarPaciente } = usePacientes()
 
 useEffect(() => {
   const obtenerPacientes = async () => {
@@ -27,23 +32,11 @@ useEffect(() => {
     obtenerPacientes()
 }, [])
 
-  const handleEliminar = async id => {
-    const confirmar = confirm('¿Deseas eliminar este paciente?')
+  const handleEliminar = () => {
 
-    if(confirmar) {
-      try {
-        const url = `${import.meta.env.VITE_SOME_KEY}/${id}`
-        const respuesta = await fetch(url, {
-          method:'DELETE'
-        })
-         respuesta.json()
-
-        const arrayPacientes = pacientes.filter( paciente => paciente.id !== id )
-        setPacientes(arrayPacientes)
-      } catch (error) {
-        console.log(error)
-      }
-    }
+    if(confirm('¿Deseas eliminar este paciente?')) {
+      eliminarPaciente(params._id)
+    } 
   }
 
   return (
