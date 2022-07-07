@@ -1,14 +1,14 @@
 import {useState , useEffect} from 'react'
 import Paciente from '../componentes/Paciente'
 import usuarioAxios from '../config/usuarioAxios'
-import usePacientes from '../hooks/usePacientes'
-import Alerta from '../componentes/Alerta'
+// import usePacientes from '../hooks/usePacientes'
+// import Alerta from '../componentes/Alerta'
 
 
 const Inicio = () => {
 
   const [pacientes, setPacientes] = useState([])
-  const { alerta } = usePacientes()
+  // const { alerta } = usePacientes()
 
 useEffect(() => {
   const obtenerPacientes = async () => {
@@ -32,16 +32,16 @@ useEffect(() => {
     obtenerPacientes()
 }, [])
 
-const { msg } = alerta
+// const { msg } = alerta
 
   return (
     <>
     <h1 className="font-black text-4xl text-sky-600">Pacientes</h1>
     <p className="mt-3">Administra tus pacientes</p>
 
-    <div>
+    {/* <div>
         {msg && <Alerta alerta={alerta} /> }
-    </div>
+    </div> */}
 
     <table className="w-full mt-5 table-auto shadow bg-white">
       <thead className='bg-sky-600 text-white'>

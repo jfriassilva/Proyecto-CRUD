@@ -45,7 +45,7 @@ const Formulario = ({ paciente, cargando }) => {
           'Content-Type' : 'application/json'
         }
       })
-    }
+    } 
 
       await respuesta.json()
       navigate('/pacientes')

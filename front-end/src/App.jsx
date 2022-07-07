@@ -4,6 +4,7 @@ import Inicio from './paginas/Inicio'
 import NuevoPaciente from './paginas/NuevoPaciente'
 import EditarPaciente from './paginas/EditarPaciente'
 import VerPaciente from './paginas/VerPaciente'
+import Cargando from './paginas/Cargando'
 
 import AuthLayout from './layout/AuthLayout'
 import Login from './paginas/Login'
@@ -34,6 +35,7 @@ function App() {
             <Route path="/pacientes"  element={<Layout/>}>
               <Route index element={<Inicio />} />
               <Route path="nuevo" element={<NuevoPaciente />} />
+              <Route path="cargando" element={<Cargando />} />
               <Route path="editar/:id" element={<EditarPaciente />} />
               <Route path=":id" element={<VerPaciente />} />
             </Route>

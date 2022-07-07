@@ -1,8 +1,7 @@
 import {useState, useEffect, createContext} from 'react'
 import usuarioAxios from '../config/usuarioAxios'
 import { useNavigate } from 'react-router-dom'
-import Paciente from '../componentes/Paciente';
-import Inicio from '../paginas/Inicio';
+
 
 
 const PacientesContext = createContext();
@@ -138,43 +137,45 @@ const PacientesProvider = ({children}) => {
         }
     }
 
-    const eliminarPaciente = async id  => {
-       try {
-        const token = localStorage.getItem('token')
-        if(!token) return
-
-        const config = {
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`
+        const eliminarPaciente = async id  => {
+            try {
+                const token = localStorage.getItem('token')
+            if(!token) return
+                const config = {
+                 headers: {
+                    "Content-Type": "application/json",
+                     Authorization: `Bearer ${token}`
+                }
+            }
+                
+            const { data } = await usuarioAxios.delete(`/pacientes/${id}`, config)
+                
+            // const pacientesActualizados = {...pacientes}
+                
+            const pacientesActualizados = pacientes.filter(pacienteState => pacienteState._id !== id)
+                
+                
+            setPaciente(pacientesActualizados)
+                
+                
+            // setAlerta({
+            //       msg: data.msg,
+            //       error: false
+            //  })
+            setTimeout(()=> {
+                //  setAlerta({})
+                 navigate('/pacientes')
+             }, 3000)
+            } catch (error) {
+                console.log(error)
+            } finally {
+                navigate('/pacientes/cargando')
             }
         }
-
-        const { data } = await usuarioAxios.delete(`/pacientes/${id}`, config)
-       
-        // const pacienteActualizados = {...Inicio}
-
-        const pacienteActualizados = pacientes.filter(pacienteState => pacienteState._id !== id)
         
         
-        setPacientes(pacienteActualizados)
-        
-        setAlerta({
-          msg: data.msg,
-          error: false
-        })
-        setTimeout(()=> {
-          setAlerta({})
-          navigate('/pacientes')
-      }, 3000)
-       } catch (error) {
-        console.log(error)
-       }
-    }
-
-
-    return (
-        <PacientesContext.Provider
+        return (
+            <PacientesContext.Provider
             value={{
                 pacientes,
                 mostrarAlerta,

@@ -4,6 +4,7 @@ import usePacientes from '../hooks/usePacientes'
 import Alerta from './Alerta'
 
 
+
 const FormularioPaciente = () => {
 
   const [id, setId] = useState(null)
@@ -55,7 +56,6 @@ const FormularioPaciente = () => {
   }
 
   const { msg } = alerta
-
 
   return (
     <form className="bg-white py-10 px-5 mt-10 rounded-lg shadow"
@@ -164,7 +164,7 @@ const FormularioPaciente = () => {
           className="mt-5 w-full bg-sky-600 p-3 text-white uppercase font-bold text-lg cursor-pointer hover:bg-sky-700 transition-colors"
         />
     </form>
-  )
+  )       
 }
 
 export default FormularioPaciente
