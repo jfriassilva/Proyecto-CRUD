@@ -12,6 +12,7 @@ const PacientesProvider = ({children}) => {
     const [alerta, setAlerta] = useState({});
     const [paciente, setPaciente] = useState({});
     const [cargando, setCargando] = useState(false)
+    const [buscador, setBuscador] = useState(false)
 
     const navigate = useNavigate();
 
@@ -172,6 +173,10 @@ const PacientesProvider = ({children}) => {
                 navigate('/pacientes/cargando')
             }
         }
+
+        const handleBuscador = () => {
+            setBuscador(!buscador)
+        }
         
         
         return (
@@ -184,7 +189,9 @@ const PacientesProvider = ({children}) => {
                 obtenerPaciente,
                 paciente,
                 cargando,
-                eliminarPaciente
+                eliminarPaciente,
+                buscador,
+                handleBuscador
             }}
             >{children}
         </PacientesContext.Provider>
