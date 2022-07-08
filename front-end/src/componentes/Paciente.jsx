@@ -5,7 +5,8 @@ import usePacientes from '../hooks/usePacientes'
 const Paciente = ({paciente}) => {
 
     const navigate = useNavigate()
-  const { eliminarPaciente } = usePacientes()
+    
+    const { eliminarPaciente } = usePacientes()
 
     const handleClick = () => {
         if(confirm('¿Desea eliminar este paciente?')){

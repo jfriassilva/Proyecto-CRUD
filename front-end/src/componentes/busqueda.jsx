@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react'
 import { Combobox, Dialog, Transition } from '@headlessui/react'
 import usePacientes from '../hooks/usePacientes'
+import {useNavigate} from 'react-router-dom'
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -8,14 +9,14 @@ function classNames(...classes) {
 
 const Busqueda = () => {
     const [ busqueda, setBusqueda] = useState('')
-
+    const navigate = useNavigate()
     const {buscador, handleBuscador, pacientes} = usePacientes()
-
+    
     const pacientesFiltrados = busqueda === '' ? [] : pacientes.filter(paciente => paciente.nombre.toLowerCase().includes(busqueda.toLowerCase()))
     
     return (
         <Transition.Root show={ buscador } as={Fragment} afterLeave={ () => setBusqueda ('') }>
-            <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto mt-20 p-4 sm:p-20 md:p-20" onClose={ handleBuscador }>
+            <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto mt-20 p-4 sm:p-20 md:p-20" onClose={ handleBuscador}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
@@ -40,8 +41,8 @@ const Busqueda = () => {
                 <Combobox
                     as="div"
                     className="mx-auto max-w-xl transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all"
-                    onChange={(paciente) => (window.location = `/pacientes/${paciente._id}`) }
-                >
+                    onChange={(paciente) => ( navigate(`/pacientes/${paciente._id}`))}
+                    >
                     <div className="relative">
                         <Combobox.Input
                             className="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm"
