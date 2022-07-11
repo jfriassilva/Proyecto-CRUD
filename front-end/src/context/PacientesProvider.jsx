@@ -177,6 +177,13 @@ const PacientesProvider = ({children}) => {
         const handleBuscador = () => {
             setBuscador(!buscador)
         }
+
+        const cerrarSesionPacientes =() => {
+            setPacientes([])
+            setPaciente({})
+            setAlerta({})
+
+        }
         
         
         return (
@@ -191,7 +198,8 @@ const PacientesProvider = ({children}) => {
                 cargando,
                 eliminarPaciente,
                 buscador,
-                handleBuscador
+                handleBuscador,
+                cerrarSesionPacientes
             }}
             >{children}
         </PacientesContext.Provider>
