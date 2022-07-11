@@ -33,6 +33,6 @@ app.use("/api/pacientes", pacientesRoutes);
 
 const PORT = process.env.PORT || 4000;
 
-app.listen(PORT, () =>{
+const servidor = app.listen(PORT, () =>{
     console.log(`Servidor corriendo en ${PORT}`);
 });
