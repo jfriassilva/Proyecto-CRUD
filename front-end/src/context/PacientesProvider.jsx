@@ -151,7 +151,6 @@ const PacientesProvider = ({children}) => {
                 
             const { data } = await usuarioAxios.delete(`/pacientes/${id}`, config)
                 
-            // const pacientesActualizados = {...pacientes}
                 
             const pacientesActualizados = pacientes.filter(pacienteState => pacienteState._id !== id)
                 
@@ -159,12 +158,9 @@ const PacientesProvider = ({children}) => {
             setPaciente(pacientesActualizados)
                 
                 
-            // setAlerta({
-            //       msg: data.msg,
-            //       error: false
-            //  })
+
             setTimeout(()=> {
-                //  setAlerta({})
+
                  navigate('/pacientes')
              }, 3000)
             } catch (error) {

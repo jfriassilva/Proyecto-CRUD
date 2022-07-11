@@ -3,14 +3,14 @@ import Paciente from '../componentes/Paciente'
 import usuarioAxios from '../config/usuarioAxios'
 import usePacientes from '../hooks/usePacientes'
 import Busqueda from '../componentes/busqueda'
-// import Alerta from '../componentes/Alerta'
+
 
 
 const Inicio = () => {
   const [pacientes, setPacientes] = useState([])
  
   const { handleBuscador } = usePacientes()
-  // const { alerta } = usePacientes()
+
 
 useEffect(() => {
   const obtenerPacientes = async () => {
